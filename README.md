@@ -44,4 +44,15 @@ these variants.
 The script `inference_heatmap.py` performs predictions for all single mutations.
 
 
+## Requirements:
+python interpreter = 3.9
 
+python software packages:
+
+numpy >= 1.26.4
+
+pandas >= 2.1.4
+
+tensorflow version == 2.10.0
+
+keras version == 2.10.0
