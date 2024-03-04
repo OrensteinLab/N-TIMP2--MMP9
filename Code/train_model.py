@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from utils import oneHot
 from sklearn.model_selection import train_test_split
-from scipy.stats.stats import pearsonr
+from scipy.stats import pearsonr
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import *
@@ -88,7 +88,7 @@ def train_evaluate_model(num_shuffles, data_train, data_test, save_model, model_
         model.add(Dense(kwargs['dense_size_2'], activation='relu'))
         model.add(Dropout(kwargs['drop_2']))
         model.add(Dense(1, activation='linear'))
-        model.compile(optimizer=tf.optimizers.Adam(learning_rate=kwargs['lr']), loss='mse')
+        model.compile(optimizer=tf.optimizers.Adam(learning_rate=kwargs['lr']), loss=tf.keras.losses.mean_squared_error)
         model.fit(train_inputs_shuff, ER_train_shuff, epochs=kwargs['epochs'], batch_size=kwargs['batch'],
                       sample_weight=weights_shuff, verbose=verbose)
         if save_model == '1':
@@ -100,6 +100,8 @@ def train_evaluate_model(num_shuffles, data_train, data_test, save_model, model_
 
 
 if __name__ == '__main__':
+    path = input(f"Please insert the location of the pre-processed data:")
+
     split = input("Please indicate your preference for data partitioning and the desired prediction task. "
                   "You have the following options:\n"
                   "'1': Use all the data to train the model without making any predictions.\n"
@@ -110,8 +112,6 @@ if __name__ == '__main__':
 
 
     # Import datasets
-
-    path = '../Data'
     ala_total_data = pd.read_csv(f'{path}/All_variant_ala.csv')
     no_ala_total_data = pd.read_csv(f'{path}/All_variant_no_ala.csv')
 
