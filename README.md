@@ -31,13 +31,15 @@ Before you proceed with the setup, make sure to have Python and Anaconda install
    - Open a command prompt.
    - Navigate to the directory where you downloaded the "Code" repository.
    - Run the following command to create a virtual conda environment named "my_env" with Python 3.9.16 and the required modules:
-     ```bash
+
+     ```
      conda create --name my_env --file requirements.txt python=3.9.16
      ```
 
 4. **Activate the New Environment and Run the Script:**
    - Activate the environment using the following command:
-     ```bash
+
+     ```
      conda activate my_env
      ```
    - Run the scripts according to the provided usage instructions.
