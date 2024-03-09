@@ -1,4 +1,4 @@
-from scipy.stats.stats import pearsonr
+from scipy.stats import pearsonr
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # see issue #152
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -19,7 +19,7 @@ def mut_to_seq(mut, wt):
 
 if __name__ == '__main__':
 
-    path = '../Data'
+    path = input(f"Please insert the location of the pre-processed data:")
     WTaa = 'CSCSPVHPQQAFCNADVVIRAKAVSEKEVDSGNDIYGNPIKRIQYEIKQIKMFKGPEKDIEFIYTAPSSAVCGVSLDVGGKKEYLIAGKAEGDGKMHIT'
     num_shuffles = 10
 
