@@ -102,7 +102,7 @@ def mutations_dict_to_df(mut_dict):
 
 
 if __name__ == '__main__':
-    data_path = 'Data/'
+    data_path = input(f"Please insert the location of the raw data:")
     all_gates_dict = {'Gate1': {}, 'Gate2': {}, 'Gate3': {}, 'Gate4': {}, 'sort1': {}}
     all_gates_ala_dict = {'Gate1': {}, 'Gate2': {}, 'Gate3': {}, 'Gate4': {}, 'sort1': {}}
 
