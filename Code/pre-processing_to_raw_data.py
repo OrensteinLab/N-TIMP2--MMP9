@@ -114,6 +114,11 @@ if __name__ == '__main__':
     raw_data_to_mutations_dict(data_path, all_gates_dict, mut_dictionary, [start_motif, len(start_motif) - 2 , nuc_length, WTaa])
     raw_data_to_mutations_dict(data_path, all_gates_ala_dict, mut_dictionary_ala,
                                [start_motif_ala, len(start_motif_ala) + 1, nuc_length, WTaa])
+
+    for key in mut_dictionary:
+        mut_dictionary[key].columns = all_gates_dict.keys()
+        mut_dictionary_ala[key].columns = all_gates_dict.keys()
+            
     remove_not_valid_variants(mut_dictionary, numerator_gate='Gate1', denominator_gate='Gate2')
     remove_not_valid_variants(mut_dictionary_ala, numerator_gate='Gate2', denominator_gate='Gate3')
     raw_data = mutations_dict_to_df(mut_dictionary)
