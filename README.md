@@ -24,8 +24,7 @@ Before you proceed with the setup, make sure to have Python and Anaconda install
    - Visit the GitHub repository: [https://github.com/OrensteinLab/N-TIMP2--MMP9/tree/main/Code](https://github.com/OrensteinLab/N-TIMP2--MMP9/tree/main/Code)
    - Download the contents of the "Code" folder.
 
-2. **Inside the "Code" Folder, Add Your Raw Data:**
-   - For code validation, include the datasets named "All_variant_ala.csv" and "All_variant_no_ala.csv."
+2. **Inside the "Data" Folder, Add Raw Data:**
 
 3. **Create a Virtual Conda Environment:**
    - Open a command prompt.
@@ -47,14 +46,21 @@ Before you proceed with the setup, make sure to have Python and Anaconda install
 
 # Usage
 ### 1.	Run the pre-processing script:
-Execute the script `pre-proccesing_to_raw_data.py` in the presence of the raw data files located in the data folder. Upon completion, the script will generate 
-two files in the folder:
+Execute the script `pre-proccesing_to_raw_data.py` in the presence of the raw data files located in the data folder.
+
+     python pre-proccesing_to_raw_data.py
+
+ Upon completion, the script will generate two files in the data folder:
 
 •	all_variant_ala.csv: Contains all variants containing Alanine (Ala)
 
 •	all_variant_no_ala.csv: Contains all variants without Alanine (Ala)
 ### 2.	Train models script:
-While running the `train_model.py` script, you will be prompted to enter input representing the action you want to perform. The code supports the following three options:
+While running the `train_model.py` script, you will be prompted to enter input representing the action you want to perform. 
+
+     python train_model.py
+
+The code supports the following three options:
 
 1-	Use all the data to train the model without making any predictions.
 
@@ -67,11 +73,30 @@ on the validation set.
 
 •	If you choose Option 2 or 3, prediction files will be generated at the end of the script execution.
 ### 3.	Get predictions:
-There are two scripts available for performing predictions:
+After training the model in the previous section: running ```python train_model.py``` using option number 1, you can now make your own predictions!
 
-1.	Independent Dataset Prediction:
-`train_inference_ki.py` script removes variants from the training dataset matching those in the external dataset. Then, trains the models and makes predictions for
-these variants.
+There are three scripts available for performing predictions:
 
-2.	All Single Mutations Prediction:
+#### 3.1	Independent Dataset Prediction:
+   
+First save your independent dataset file in the data folder. The file should be in csv format and include the following columns:
+Variant, Ki, Ki ratio, log_ki_ratio
+
+The `train_inference_ki.py` script removes variants from the training dataset matching those in the external dataset. Then, trains the models and makes predictions for these variants.
+
+#### 3.2	All Single Mutations Prediction:
 The script `inference_heatmap.py` performs predictions for all single mutations.
+
+#### 3.3 A desired variant prediction
+The script `predict_variant.py` can predict the log2 ER of any variant you want. 
+Run the script and enter the 7 relevant positions of the variant you want to check. The script will return the predicted log2 ER of the variant.
+
+For example, when running:
+     
+      python predict_variant.py
+      Please insert the variant 7 positions sequence:SINSVHT
+
+The output is: 
+
+      The predicted log2 ER of variant SINSVHT is 0.17626083
+     
