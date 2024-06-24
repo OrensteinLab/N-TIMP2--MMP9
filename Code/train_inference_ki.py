@@ -19,7 +19,7 @@ def mut_to_seq(mut, wt):
 
 if __name__ == '__main__':
 
-    path = input(f"Please insert the location of the pre-processed data:")
+    path = '../Data'
     WTaa = 'CSCSPVHPQQAFCNADVVIRAKAVSEKEVDSGNDIYGNPIKRIQYEIKQIKMFKGPEKDIEFIYTAPSSAVCGVSLDVGGKKEYLIAGKAEGDGKMHIT'
     num_shuffles = 10
 

@@ -100,7 +100,7 @@ def train_evaluate_model(num_shuffles, data_train, data_test, save_model, model_
 
 
 if __name__ == '__main__':
-    path = input(f"Please insert the location of the pre-processed data:")
+    path = '../Data'
 
     split = input("Please indicate your preference for data partitioning and the desired prediction task. "
                   "You have the following options:\n"
@@ -120,9 +120,9 @@ if __name__ == '__main__':
         split_data(ala_total_data, minRepetitionThrAla, no_ala_total_data, minRepetitionThrNoAla, split)
 
     # Train ala model and predict
-    predictions_ala = train_evaluate_model(num_shuffles, ala_train, ala_test, save_model=split, model_name='ala', kwargs=kwargs_ala, verbose=0)
+    predictions_ala = train_evaluate_model(num_shuffles, ala_train, ala_test, save_model=split, model_name='ala', kwargs=kwargs_ala, verbose=1)
     # Train no ala model and predict
-    predictions_no_ala = train_evaluate_model(num_shuffles, no_ala_train, no_ala_test, save_model=split, model_name='no_ala', kwargs=kwargs_no_ala, verbose=0)
+    predictions_no_ala = train_evaluate_model(num_shuffles, no_ala_train, no_ala_test, save_model=split, model_name='no_ala', kwargs=kwargs_no_ala, verbose=1)
 
     if split == '1':
         sys.exit()

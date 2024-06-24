@@ -9,7 +9,7 @@ from tensorflow.keras.layers import *
 
 if __name__ == '__main__':
 
-    path = input(f"Please insert the location of the pre-processed data:")
+    path = '../Data'
     num_shuffles = 10
     predictions_ala = []
     predictions_no_ala = []
